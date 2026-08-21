@@ -1,0 +1,17 @@
+{
+  "name": "image-renderer",
+  "version": "1.0.0",
+  "description": "Puppeteer microservice for compositing Instagram health post images",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "puppeteer": "^22.0.0",
+    "fluent-ffmpeg": "^2.1.3"
+  }
+}
