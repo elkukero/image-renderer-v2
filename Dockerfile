@@ -6,7 +6,12 @@ ENV PUPPETEER_SKIP_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 
 USER root
-RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg \
+# La imagen base agrega el repo de Google Chrome pero sin su llave GPG,
+# lo que rompe "apt-get update". Lo quitamos: Chrome ya viene instalado,
+# solo necesitamos ffmpeg de los repos normales de Debian.
+RUN rm -f /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
